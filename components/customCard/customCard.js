@@ -5,23 +5,27 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 const CustomCard = ({ post }) => {
-  console.log(post);
   return (
-    <Card sx={{ minWidth: 275, minHeight: 200 }}>
-      <CardContent>
+    <Card sx={{ minWidth: 275, height: 200 }}>
+      <CardContent sx={{ height: 70 }}>
         <Typography variant="h6" component="div">
-          {post.title}
+          {post.title.slice(0, 25)} ...
         </Typography>
       </CardContent>
-      <CardContent>
+      <CardContent sx={{ height: 80 }}>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.body.slice(0, 85)} ...
         </Typography>
       </CardContent>
+      <CardActions>
+        <Link href={`/posts/${post.id}`}>
+          <Button>more</Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 };
