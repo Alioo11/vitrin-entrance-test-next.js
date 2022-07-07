@@ -1,21 +1,17 @@
 import "../styles/globals.css";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-
 import { Provider } from "react-redux";
 import store from "../redux";
+import CustomProvider from "../providers/Provider";
+import CustomNav from "../components/nav/customNav";
 
 function MyApp({ Component, pageProps }) {
-  const darkTheme = createTheme({
-    palette: {
-      mode: "dark",
-    },
-  });
   return (
     <Provider store={store}>
-      <ThemeProvider theme={darkTheme}>
+      <CustomProvider>
+        <CustomNav />
         <Component {...pageProps} />
-      </ThemeProvider>
+      </CustomProvider>
     </Provider>
   );
 }
